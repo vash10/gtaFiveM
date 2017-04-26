@@ -1,0 +1,13 @@
+CitizenMP.Server.exe
+CitizenMP.Server.exe.config
+NLog.config
+/cache/
+/system/
+run.sh
+run.bat
+/mono/
+libuv.dll
+libuv.so
+hello.png
+/bin/
+RELEASE.txt
