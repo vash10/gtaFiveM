@@ -24,13 +24,13 @@ AutoStartResources:
     - vdk_inventory
     - MissionText
     - vdk_recolt
-    
+    - default-blips
 
 # do change
 RconPassword: lovely
 
 # configure this, please
-Hostname: Dev server6 - analrekt
+Hostname: ^5█^7█^1█ ^1Dev server
 
 # don't change this, it'll cause your server to be unlisted
 Game: GTA5
