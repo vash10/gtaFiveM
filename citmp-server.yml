@@ -19,6 +19,8 @@ AutoStartResources:
     - jobs
     - paycheck
     - speedometer
+    - es_weashop
+    - vehcontrol
     
 
 # do change
