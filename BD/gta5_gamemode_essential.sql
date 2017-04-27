@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2017 at 05:36 PM
+-- Generation Time: Apr 27, 2017 at 06:23 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -38,6 +38,57 @@ CREATE TABLE `bans` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `coordinates`
+--
+
+CREATE TABLE `coordinates` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `x` double DEFAULT NULL,
+  `y` double DEFAULT NULL,
+  `z` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `coordinates`
+--
+
+INSERT INTO `coordinates` (`id`, `x`, `y`, `z`) VALUES
+(1, 2222.84301757813, 5578.4443359375, 53.7291946411133),
+(2, 2477.29931640625, 3784.62109375, 41.4352760314941),
+(3, -1476.54870605469, 171.836669921875, 55.8890762329102),
+(4, 2645.97143554688, 2806.37280273438, 33.9922828674316),
+(5, 1038.34326171875, 2261.36840820313, 43.729866027832),
+(6, 172.151062011719, 2279.62280273438, 92.6908645629883);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `libelle` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`id`, `libelle`) VALUES
+(1, 'Cuivre'),
+(2, 'Fer'),
+(3, 'Or'),
+(4, 'Weed'),
+(5, 'Pain'),
+(6, 'Eau'),
+(7, 'Coca'),
+(8, 'Pefra'),
+(9, 'Casserole');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jobs`
 --
 
@@ -61,6 +112,31 @@ INSERT INTO `jobs` (`job_id`, `job_name`, `salary`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `recolt`
+--
+
+CREATE TABLE `recolt` (
+  `ID` int(11) UNSIGNED NOT NULL,
+  `raw_id` int(11) UNSIGNED DEFAULT NULL,
+  `treated_id` int(11) UNSIGNED DEFAULT NULL,
+  `job_id` int(11) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `field_id` int(10) UNSIGNED DEFAULT NULL,
+  `treatment_id` int(10) UNSIGNED DEFAULT NULL,
+  `seller_id` int(10) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `recolt`
+--
+
+INSERT INTO `recolt` (`ID`, `raw_id`, `treated_id`, `job_id`, `price`, `field_id`, `treatment_id`, `seller_id`) VALUES
+(1, 4, 8, NULL, 3000, 1, 2, 3),
+(2, 1, 9, 4, 1500, 4, 5, 6);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -78,8 +154,29 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`identifier`, `group`, `permission_level`, `money`, `bankbalance`, `job`) VALUES
-('steam:11000010017dcc3', 'owner', 0, 6327, 51000, 5),
+('steam:11000010017dcc3', 'owner', 0, 13787, 51000, 4),
 ('steam:1100001047c07d7', 'user', 0, 4000, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_inventory`
+--
+
+CREATE TABLE `user_inventory` (
+  `user_id` varchar(255) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
+  `item_id` int(11) UNSIGNED NOT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user_inventory`
+--
+
+INSERT INTO `user_inventory` (`user_id`, `item_id`, `quantity`) VALUES
+('steam:11000010017dcc3', 1, 4),
+('steam:11000010017dcc3', 4, 6),
+('steam:11000010017dcc3', 9, 0);
 
 -- --------------------------------------------------------
 
@@ -112,16 +209,47 @@ ALTER TABLE `bans`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `coordinates`
+--
+ALTER TABLE `coordinates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`job_id`);
 
 --
+-- Indexes for table `recolt`
+--
+ALTER TABLE `recolt`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `raw_id` (`raw_id`),
+  ADD KEY `treated_id` (`treated_id`),
+  ADD KEY `job_id` (`job_id`),
+  ADD KEY `field_id` (`field_id`),
+  ADD KEY `treatment_id` (`treatment_id`),
+  ADD KEY `seller_id` (`seller_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`identifier`);
+
+--
+-- Indexes for table `user_inventory`
+--
+ALTER TABLE `user_inventory`
+  ADD PRIMARY KEY (`user_id`,`item_id`),
+  ADD KEY `item_id` (`item_id`);
 
 --
 -- Indexes for table `user_weapons`
@@ -139,15 +267,51 @@ ALTER TABLE `user_weapons`
 ALTER TABLE `bans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `coordinates`
+--
+ALTER TABLE `coordinates`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `recolt`
+--
+ALTER TABLE `recolt`
+  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `user_weapons`
 --
 ALTER TABLE `user_weapons`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `recolt`
+--
+ALTER TABLE `recolt`
+  ADD CONSTRAINT `recolt_ibfk_1` FOREIGN KEY (`raw_id`) REFERENCES `items` (`id`),
+  ADD CONSTRAINT `recolt_ibfk_2` FOREIGN KEY (`treated_id`) REFERENCES `items` (`id`),
+  ADD CONSTRAINT `recolt_ibfk_3` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`),
+  ADD CONSTRAINT `recolt_ibfk_4` FOREIGN KEY (`field_id`) REFERENCES `coordinates` (`id`),
+  ADD CONSTRAINT `recolt_ibfk_5` FOREIGN KEY (`treatment_id`) REFERENCES `coordinates` (`id`),
+  ADD CONSTRAINT `recolt_ibfk_6` FOREIGN KEY (`seller_id`) REFERENCES `coordinates` (`id`);
+
+--
+-- Constraints for table `user_inventory`
+--
+ALTER TABLE `user_inventory`
+  ADD CONSTRAINT `user_inventory_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
