@@ -25,6 +25,10 @@ AutoStartResources:
     - MissionText
     - vdk_recolt
     - default-blips
+    - cars
+    - loadingscreen
+    - lastpostodb    
+    
 
 # do change
 RconPassword: lovely
