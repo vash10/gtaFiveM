@@ -17,6 +17,7 @@ AutoStartResources:
     - banking
     - frfuel
     - jobs
+    - custom_jobs
     - paycheck
     - carhud
     - es_weashop
