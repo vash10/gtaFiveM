@@ -1,6 +1,6 @@
 local blips = {
    -- Airport and Airfield
-   {name="Airport", id=90, x=-1032.690, y=-2728.141, z=13.757},
+   {name="Airport", id=280, x=-1032.690, y=-2728.141, z=13.757},
    {name="Airport", id=90, x=1743.6820, y=3286.2510, z=40.087},
    -- barbers
    {name="Barber", id=71, x=-827.333, y=-190.916, z=37.599},

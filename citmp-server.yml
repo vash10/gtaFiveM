@@ -21,6 +21,9 @@ AutoStartResources:
     - speedometer
     - es_weashop
     - vehcontrol
+    - vdk_inventory
+    - MissionText
+    - vdk_recolt
     
 
 # do change
