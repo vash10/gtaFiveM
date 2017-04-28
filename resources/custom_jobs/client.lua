@@ -1,30 +1,3 @@
---[[
-RegisterNetEvent('jobssystem:create_target')
-AddEventHandler('jobssystem:create_target', function()
-		nigger =  CreatePed(5, 0xD172497E, -1033.14, -2731.23, 29.5394, 211.587, false, true)
-		SetBlockingOfNonTemporaryEvents(nigger, true)
-		SetPedCombatAttributes(nigger, 46, true)
-		SetPedFleeAttributes(nigger, 0, 0)
-		--SetPedRelationshipGroupHash(nigger, GetHashKey("CIVFEMALE"))
-		TaskWanderStandard(nigger, 0, 0)
-end)
-
-
-
-
-
-Citizen.CreateThread(function ()
-	RequestModel(GetHashKey("a_m_m_afriamer_01"))
-	while not HasModelLoaded(GetHashKey("a_m_m_afriamer_01")) do
-		Wait(1)
-	end
-	while true do
-		Citizen.Wait(0)
-	end
-end)
-
-]]
-
 local Keys = {
 	["ESC"] = 322, ["F1"] = 288, ["F2"] = 289, ["F3"] = 170, ["F5"] = 166, ["F6"] = 167, ["F7"] = 168, ["F8"] = 169, ["F9"] = 56, ["F10"] = 57,
 	["~"] = 243, ["1"] = 157, ["2"] = 158, ["3"] = 160, ["4"] = 164, ["5"] = 165, ["6"] = 159, ["7"] = 161, ["8"] = 162, ["9"] = 163, ["-"] = 84, ["="] = 83, ["BACKSPACE"] = 177,
@@ -156,6 +129,11 @@ function init()
     BLIP.company = AddBlipForCoord(KillerCompany[0]["x"], KillerCompany[0]["y"], KillerCompany[0]["z"])
     SetBlipSprite(BLIP.company, 280)
     SetBlipDisplay(BLIP.company, 4)
+	--On modifie le nom affiché lorsque l'on passe la souris sur le BLIP
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString("Killer")
+    EndTextCommandSetBlipName(BLIP.company)
+	--Fin modificatio nom 
     SetBlipScale(BLIP.company, 0.8)
     Citizen.Trace("Killer Blip added.")
    -- GUI.loaded = true
