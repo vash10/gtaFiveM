@@ -20,7 +20,6 @@ end
 local KillerCompany = {}
 KillerCompany[0] = {["x"] = 1445.07,["y"] = -2221.22, ["z"] = 61.6848}
 
---local Truck = {"HAULER", "PACKER", "PHANTOM"}
 local Target = {"a_m_m_afriamer_01", "a_m_m_afriamer_01", "a_m_m_afriamer_01", "a_m_m_afriamer_01"}
 
 local MissionData = {
@@ -42,7 +41,6 @@ local MISSION = {}
 MISSION.start = false
 MISSION.target = false
 
-MISSION.hashTruck = 0
 MISSION.hashTarget = 0
 
 local currentMission = -1
@@ -91,20 +89,6 @@ function clear()
     SetBlipRoute(BLIP.destination[BLIP.destination.i], false)
     SetEntityAsNoLongerNeeded(BLIP.destination[BLIP.destination.i])
 
-    --if ( DoesEntityExist(MISSION.trailer) ) then
-         --SetEntityAsNoLongerNeeded(MISSION.trailer)
-    --end
-    --if ( DoesEntityExist(MISSION.truck) ) then
-         --SetEntityAsNoLongerNeeded(MISSION.truck)
-         --SetVehicleDoorsLocked(MISSION.truck, 2)
-         --SetVehicleUndriveable(MISSION.truck, true)
-    --end
-    Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(MISSION.trailer))
-    Citizen.InvokeNative(0xEA386986E786A54F, Citizen.PointerValueIntInitialized(MISSION.truck))
-
-    --MISSION.trailer = 0
-    --MISSION.truck = 0
-    --MISSION.hashTruck = 0
     MISSION.hashTarget = 0
     currentMission = -1
 end
@@ -119,7 +103,6 @@ Citizen.CreateThread(function()
             init()
             initload = true
         end
-		TriggerEvent("mt:missiontext", "Ticking", 5000)
         tick()
     end
 
@@ -141,7 +124,6 @@ end
 
 --Draw Text / Menus
 function tick()
-	TriggerEvent("mt:missiontext", "tick1", 5000)
 
     --debugging stange things
     if ( type(BLIP.target[BLIP.target.i]) == "boolean" ) then
@@ -153,13 +135,10 @@ function tick()
     else
        BLIP.target[BLIP.target.i] = BLIP.target[BLIP.target.i]
     end
-	TriggerEvent("mt:missiontext", "tick2", 5000)
 
     --Show menu, when player is near
     if( MISSION.start == false) then
-		TriggerEvent("mt:missiontext", "Mission non commencé", 5000)
     if( GetDistanceBetweenCoords( playerCoords, KillerCompany[0]["x"], KillerCompany[0]["y"], KillerCompany[0]["z"] ) < 10) then
-		TriggerEvent("mt:missiontext", "Mission commenceable", 5000)
             if(GUI.showStartText == false) then
                 GUI.drawStartText()
             end
@@ -189,12 +168,9 @@ function tick()
                 GUI.updateSelectionMenu(GUI.menu)
                 GUI.time = 0
             end
-			TriggerEvent("mt:missiontext", "Render", 5000)
             GUI.renderMenu(GUI.menu)
-			TriggerEvent("mt:missiontext", "RenderDone", 5000)
         end --if GUI.loaded == false
     elseif( MISSION.start == true ) then
-            TriggerEvent("mt:missiontext", "Mission en cours", 5000)
 
         MISSION.markerUpdate()
         if(text1 == false) then
@@ -237,24 +213,9 @@ function GUI.mission(missionN)
     GUI.showMenu = false
     --mission start
     MISSION.start = true
-	TriggerEvent("mt:missiontext", "Mission Start !!!!",50000)
     MISSION.spawnTarget()
 	SetEntityAsMissionEntity(MISSION.target, true, true);
-	TriggerEvent("mt:missiontext", "Mission Started !!!!",50000)
 end
-
---[[function MISSION.spawnTruck()
-
-    MISSION.truck = CreateVehicle(MISSION.hashTruck, 12.1995, -1.174761, 73.000, 0.0, true, false)
-    SetVehicleOnGroundProperly(MISSION.trailer)
-    SetVehicleNumberPlateText(MISSION.truck, "M15510")
-    SetVehRadioStation(MISSION.truck, "OFF")
-		SetPedIntoVehicle(playerPed, MISSION.truck, -1)
-    SetVehicleEngineOn(MISSION.truck, true, false, false)
-
-    --important
-    --SetEntityAsMissionEntity(MISSION.truck, true, true);
-end]]
 
 function MISSION.spawnTarget()
 
@@ -264,12 +225,11 @@ function MISSION.spawnTarget()
     while not HasModelLoaded(MISSION.hashTarget) do
         Wait(1)
     end
-	TriggerEvent("mt:missiontext", "Spawning target ",50000)
 	
-	MISSION.target = CreatePed(5, MISSION.hashTarget, currentMission[1], currentMission[2], currentMission[3], currentMission[4], false, true)
+    MISSION.target = CreatePed(5, MISSION.hashTarget, currentMission[1], currentMission[2], currentMission[3], currentMission[4], false, true)
 	
     MISSION.setBlipOnTarget()
-	MISSION.createTargetEnvironment()
+    MISSION.createTargetEnvironment()
 end
 
 local oneTime = false
@@ -300,17 +260,14 @@ function MISSION.createTargetEnvironment()
 end
 
 function MISSION.setBlipOnTarget()
-	TriggerEvent("mt:missiontext", "Blip SET !!!!",30000)
 	BLIP.target[BLIP.target.i] = AddBlipForEntity(MISSION.target)
 	SetBlipSprite(BLIP.target[BLIP.target.i], 1)
 	SetBlipColour(BLIP.target[BLIP.target.i], 17)
 	SetBlipRoute(BLIP.target[BLIP.target.i], true)
     Wait(50)
-	TriggerEvent("mt:missiontext", "Blip SET Done!!!!",30000)
 end
 
 function MISSION.markerUpdate()
-	TriggerEvent("mt:missiontext", "markerUpdate",30000)
 	if ( not BLIP.target[BLIP.target.i]) then
 		BLIP.target[BLIP.target.i] = AddBlipForEntity(MISSION.target)
 		SetBlipSprite(BLIP.target[BLIP.target.i], 1)
@@ -348,14 +305,6 @@ function GUI.init()
     GUI.loaded = true
     GUI.addTitle("You're a killer now.", 0.425, 0.19, 0.45, 0.07 )
     GUI.addDesc("Choose a target.", 0.575, 0.375, 0.15, 0.30 )
-
-    --menu, title, function, position
-	--GUI.addButton(0, "Ballas", GUI.optionMisson, 0.35, 0.25, 0.3, 0.05 )
-    --GUI.addButton(0, "Aztecas", GUI.optionMisson, 0.35, 0.30, 0.3, 0.05 )
-    --GUI.addButton(0, "Lost MC", GUI.optionMisson, 0.35, 0.35, 0.3, 0.05 )
-    --GUI.addButton(0, "Log trailer", GUI.optionMisson, 0.35, 0.40, 0.3, 0.05 )
-    --GUI.addButton(0, " ", GUI.null, 0.35, 0.45, 0.3, 0.05)
-    --GUI.addButton(0, "Exit Menu", GUI.exit, 0.35, 0.50, 0.3, 0.05 )
 
     GUI.buttonCount = 0
 
