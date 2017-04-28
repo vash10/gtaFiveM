@@ -3,7 +3,7 @@ local depositAtATM = false -- Allows the player to deposit at an ATM rather than
 local giveCashAnywhere = false -- Allows the player to give CASH to another player, no matter how far away they are. (Default: false)
 local withdrawAnywhere = false -- Allows the player to withdraw cash from bank account anywhere (Default: false)
 local depositAnywhere = false -- Allows the player to deposit cash into bank account anywhere (Default: false)
-local displayBankBlips = true -- Toggles Bank Blips on the map (Default: true)
+local displayBankBlips = false -- Toggles Bank Blips on the map (Default: true)
 local displayAtmBlips = false -- Toggles ATM blips on the map (Default: false) // THIS IS UGLY. SOME ICONS OVERLAP BECAUSE SOME PLACES HAVE MULTIPLE ATM MACHINES. NOT RECOMMENDED
 local enableBankingGui = true -- Enables the banking GUI (Default: true) // MAY HAVE SOME ISSUES
 
@@ -86,13 +86,13 @@ local atms = {
 
 -- Banks
 local banks = {
-  {name="Bank", id=108, x=150.266, y=-1040.203, z=29.374},
-  {name="Bank", id=108, x=-1212.980, y=-330.841, z=37.787},
-  {name="Bank", id=108, x=-2962.582, y=482.627, z=15.703},
-  {name="Bank", id=108, x=-112.202, y=6469.295, z=31.626},
-  {name="Bank", id=108, x=314.187, y=-278.621, z=54.170},
-  {name="Bank", id=108, x=-351.534, y=-49.529, z=49.042},
-  {name="Bank", id=108, x=241.727, y=220.706, z=106.286},
+  {name="Bank", id=434, x=150.266, y=-1040.203, z=29.374},
+  {name="Bank", id=434, x=-1212.980, y=-330.841, z=37.787},
+  {name="Bank", id=434, x=-2962.582, y=482.627, z=15.703},
+  {name="Bank", id=434, x=-112.202, y=6469.295, z=31.626},
+  {name="Bank", id=434, x=314.187, y=-278.621, z=54.170},
+  {name="Bank", id=434, x=-351.534, y=-49.529, z=49.042},
+  {name="Bank", id=434, x=241.727, y=220.706, z=106.286},
 }
 
 -- Display Map Blips

@@ -23,18 +23,40 @@ KillerCompany[0] = {["x"] = 1445.07,["y"] = -2221.22, ["z"] = 61.6848}
 local Target = {"a_m_m_afriamer_01", "a_m_m_afriamer_01", "a_m_m_afriamer_01", "a_m_m_afriamer_01"}
 
 local MissionData = {
-    [0] = {1212.4463, 2667.4351, 38.79, 5000, "a_m_m_afriamer_01"}, --x,y,z,money
-    [1] = {2574.5144, 328.5554, 108.45, 10000, "a_m_m_afriamer_01"},
-    [2] = {-1463.81, 179.996, 54.75, 15000, "a_m_m_afriamer_01", 
+    [0] = {-82.94, -869.943, 40.57, 5000, "a_m_m_afriamer_01", -- Bureau du FIB
+		{
+			{x=-82.94, y=-869.943, z=40.57, a=0.0, model='cs_tracydisanto', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
+			{x=-82.94, y=-869.943, z=40.57, a=-90.0, model='a_f_y_topless_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"}
+		}
+	}, 
+    [1] = {87.23, -1955.35, 20.75, 10000, "G_M_Y_famfor_01", -- Grove street CJ
+			{
+			{x=87.23, y=-1955.35, z=20.75, a=0.0, model='cs_tracydisanto', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
+			{x=87.23, y=-1955.35, z=20.75, a=-90.0, model='a_f_y_topless_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"}
+		}
+	},
+    [2] = {-1463.81, 179.996, 54.75, 15000, "a_m_m_afriamer_01", -- Manoir playboy
 		{
 			{x=-1463.81, y=179.996, z=54.75, a=0.0, model='cs_tracydisanto', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
 			{x=-1460.81, y=190.996, z=55.75, a=-90.0, model='a_f_y_topless_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
 			{x=-1460.44, y=178.596, z=54.75, a=-45.0, model='a_f_y_topless_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
 			{x=-1454.39, y=194.096, z=54.56, a=45.0, model='a_f_y_topless_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"}
-		} -- Others peds around
+		} 
 	},
-    [3] = {1706.7966, 4943.9897, 42.16, 20000, "a_m_m_afriamer_01"},
-    [4] = {196.5617, 6631.0967, 31.53, 30000, "a_m_m_afriamer_01"},
+    [3] = {454.705, 5572.01, 781.185, 20000, "a_m_m_afriamer_01", -- Mont chilliad
+		{
+			{x=454.705, y=5572.01, z=781.185, a=0.0, model='cs_tracydisanto', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
+			{x=454.705, y=5572.01, z=781.185, a=-90.0, model='a_f_y_topless_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"}
+		}
+	},
+    [4] = {-2092.16, 3237.62, 32.8104, 30000, "S_M_Y_Marine_03", -- Fort Zancudo
+		{
+			{x=-2091.16, y=3237.62, z=32.81, a=0.0, model='s_m_m_marine_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
+			{x=-2084.16, y=3237.62, z=32.81, a=-90.0, model='s_m_m_marine_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
+			{x=-2095.16, y=3237.62, z=32.81, a=-45.0, model='s_m_m_marine_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"},
+			{x=-2096.16, y=3237.62, z=32.81, a=45.0, model='s_m_m_marine_01', anim="mini@strip_club@idles@bouncer@base", animgroup="base"}
+		} 
+	},
     [5] = {1449.42, -2206.00, 62.11, 1337, "a_m_m_afriamer_01"}
 }
 local MISSION = {}

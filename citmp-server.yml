@@ -28,7 +28,8 @@ AutoStartResources:
     - default-blips
     - cars
     - loadingscreen
-    - lastpostodb    
+    - lastpostodb
+    - lscustoms
     
 
 # do change
