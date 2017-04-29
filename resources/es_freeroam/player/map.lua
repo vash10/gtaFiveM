@@ -15,7 +15,7 @@ local blips = {
     {name="Prison", id=285, x=1679.049, y=2513.711, z=45.565},
     -- Hospitals
     -- Vehicle Shop (Simeon)
-    --{name="Simeon", id=120, x=-33.803, y=-1102.322, z=25.422},
+    {name="Simeon", id=120, x=-33.803, y=-1102.322, z=25.422},
     -- LS Customs
     --{name="LS Customs", id=72, x= -362.796, y= -132.400, z= 38.252},
     --{name="LS Customs", id=72, x= -1140.19, y= -1985.478, z= 12.729},

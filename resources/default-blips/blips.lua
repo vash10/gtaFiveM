@@ -48,8 +48,8 @@ local blips = {
     {title="Banques", colour=2, id=434, x=-351.534, y=-49.529, z=49.042},
     {title="Banques", colour=2, id=434, x=241.727, y=220.706, z=106.286},
 	-- Aéroport
-    {title="Aéroport", colour=3, id=280, x=-1032.690, y=-2728.141, z=13.757},
-	{title="Aéroport", colour=3, id=90, x=1381.74, y=31330.03, z=40.8172},
+    {title="KissAndFly", colour=3, id=280, x=-1032.690, y=-2728.141, z=13.757},
+	--{title="Aéroport", colour=3, id=90, x=1381.74, y=31330.03, z=40.8172},
 	{title="Aéroport", colour=3, id=90, x=2044.42, y=4768.07, z=41.0603},
 	{title="Aéroport", colour=3, id=90, x=1743.6820, y=3286.2510, z=40.087},
     -- Magasins

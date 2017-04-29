@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2017 at 08:47 AM
+-- Generation Time: Apr 27, 2017 at 06:23 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -146,19 +146,16 @@ CREATE TABLE `users` (
   `permission_level` int(11) NOT NULL DEFAULT '0',
   `money` double NOT NULL DEFAULT '0',
   `bankbalance` int(32) DEFAULT '0',
-  `job` int(11) DEFAULT '1',
-  `lastpos` varchar(255) DEFAULT '{-1037.79388671875, -2738.11872070313,  20.16776553153992, 142.503463745117}',
-  `personalvehicle` varchar(60) NOT NULL
+  `job` int(11) DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`identifier`, `group`, `permission_level`, `money`, `bankbalance`, `job`, `lastpos`, `personalvehicle`) VALUES
-('steam:11000010017dcc3', 'owner', 0, 250207, 281010, 5, '{-489.507568359375, -166.128265380859,  37.4401893615723, 173.554626464844}', 'AKUMA'),
-('steam:110000102234e70', 'user', 0, 3000, 0, 1, '{1257.1728515625, -1145.74743652344,  51.0427513122559, 59.6480445861816}', ''),
-('steam:1100001047c07d7', 'user', 0, 4000, 0, 1, '{-887.48388671875, -2311.68872070313,  -3.50776553153992, 142.503463745117}', '');
+INSERT INTO `users` (`identifier`, `group`, `permission_level`, `money`, `bankbalance`, `job`) VALUES
+('steam:11000010017dcc3', 'owner', 0, 13787, 51000, 4),
+('steam:1100001047c07d7', 'user', 0, 4000, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -177,11 +174,9 @@ CREATE TABLE `user_inventory` (
 --
 
 INSERT INTO `user_inventory` (`user_id`, `item_id`, `quantity`) VALUES
-('steam:11000010017dcc3', 1, 12),
-('steam:11000010017dcc3', 4, 0),
-('steam:11000010017dcc3', 8, 0),
-('steam:11000010017dcc3', 9, 0),
-('steam:110000102234e70', 1, 4);
+('steam:11000010017dcc3', 1, 4),
+('steam:11000010017dcc3', 4, 6),
+('steam:11000010017dcc3', 9, 0);
 
 -- --------------------------------------------------------
 
@@ -201,8 +196,7 @@ CREATE TABLE `user_weapons` (
 --
 
 INSERT INTO `user_weapons` (`ID`, `identifier`, `weapon_model`, `withdraw_cost`) VALUES
-(19, 'steam:11000010017dcc3', 'WEAPON_CombatPistol', 10),
-(20, 'steam:11000010017dcc3', 'WEAPON_AssaultRifle', 2500);
+(19, 'steam:11000010017dcc3', 'WEAPON_CombatPistol', 10);
 
 --
 -- Indexes for dumped tables
@@ -296,7 +290,7 @@ ALTER TABLE `recolt`
 -- AUTO_INCREMENT for table `user_weapons`
 --
 ALTER TABLE `user_weapons`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- Constraints for dumped tables
 --

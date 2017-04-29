@@ -8,7 +8,6 @@ run.bat
 /mono/
 libuv.dll
 libuv.so
-hello.png
 /bin/
 RELEASE.txt
 /resources/cars/
