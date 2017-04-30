@@ -2,10 +2,10 @@
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 30, 2017 at 03:57 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Client :  127.0.0.1
+-- Généré le :  Dim 30 Avril 2017 à 16:51
+-- Version du serveur :  5.7.14
+-- Version de PHP :  5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `gta5_gamemode_essential`
+-- Base de données :  `gta5_gamemode_essential`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bans`
+-- Structure de la table `bans`
 --
 
 CREATE TABLE `bans` (
@@ -38,7 +38,7 @@ CREATE TABLE `bans` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coordinates`
+-- Structure de la table `coordinates`
 --
 
 CREATE TABLE `coordinates` (
@@ -49,7 +49,7 @@ CREATE TABLE `coordinates` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `coordinates`
+-- Contenu de la table `coordinates`
 --
 
 INSERT INTO `coordinates` (`id`, `x`, `y`, `z`) VALUES
@@ -63,7 +63,7 @@ INSERT INTO `coordinates` (`id`, `x`, `y`, `z`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `items`
+-- Structure de la table `items`
 --
 
 CREATE TABLE `items` (
@@ -72,7 +72,7 @@ CREATE TABLE `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `items`
+-- Contenu de la table `items`
 --
 
 INSERT INTO `items` (`id`, `libelle`) VALUES
@@ -89,7 +89,7 @@ INSERT INTO `items` (`id`, `libelle`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jobs`
+-- Structure de la table `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -99,7 +99,7 @@ CREATE TABLE `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `jobs`
+-- Contenu de la table `jobs`
 --
 
 INSERT INTO `jobs` (`job_id`, `job_name`, `salary`) VALUES
@@ -107,12 +107,13 @@ INSERT INTO `jobs` (`job_id`, `job_name`, `salary`) VALUES
 (2, 'Policier', 1200),
 (3, 'Pompier', 1200),
 (4, 'Mineur', 700),
-(5, 'Chauffeur de taxi', 1000);
+(5, 'Chauffeur de taxi', 1000),
+(6, 'Illegal', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recolt`
+-- Structure de la table `recolt`
 --
 
 CREATE TABLE `recolt` (
@@ -127,17 +128,17 @@ CREATE TABLE `recolt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `recolt`
+-- Contenu de la table `recolt`
 --
 
 INSERT INTO `recolt` (`ID`, `raw_id`, `treated_id`, `job_id`, `price`, `field_id`, `treatment_id`, `seller_id`) VALUES
-(1, 4, 8, NULL, 3000, 1, 2, 3),
+(1, 4, 8, 6, 3000, 1, 2, 3),
 (2, 1, 9, 4, 1500, 4, 5, 6);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -152,19 +153,20 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Contenu de la table `users`
 --
 
 INSERT INTO `users` (`identifier`, `group`, `permission_level`, `money`, `bankbalance`, `job`, `lastpos`, `personalvehicle`) VALUES
-('steam:11000010017dcc3', 'owner', 0, 247177, 281010, 4, '{172.151992797852, 2279.56591796875,  92.2040023803711, 349.863586425781}', 'AKUMA'),
-('steam:11000010062fbbc', 'user', 0, 0, 0, 1, '{-1037.79388671875, -2738.11872070313,  20.16776553153992, 142.503463745117}', NULL),
+('steam:11000010017dcc3', 'owner', 0, 257947, 281010, 5, '{2212.59326171875, 5577.7109375,  53.8124885559082, 81.0682830810547}', 'AKUMA'),
+('steam:11000010062fbbc', 'user', 0, 1500, 0, 1, '{253.611404418945, 2798.13989257813,  43.3018989562988, 4.50258255004883}', NULL),
+('steam:11000010063d2c7', 'user', 0, 4500, 0, 4, '{217.540374755859, 3364.46875,  38.8761520385742, 214.745025634766}', NULL),
 ('steam:110000102234e70', 'user', 0, 3000, 0, 1, '{1257.1728515625, -1145.74743652344,  51.0427513122559, 59.6480445861816}', ''),
 ('steam:1100001047c07d7', 'user', 0, 4000, 0, 1, '{-887.48388671875, -2311.68872070313,  -3.50776553153992, 142.503463745117}', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_inventory`
+-- Structure de la table `user_inventory`
 --
 
 CREATE TABLE `user_inventory` (
@@ -174,22 +176,24 @@ CREATE TABLE `user_inventory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user_inventory`
+-- Contenu de la table `user_inventory`
 --
 
 INSERT INTO `user_inventory` (`user_id`, `item_id`, `quantity`) VALUES
-('steam:11000010017dcc3', 1, 12),
-('steam:11000010017dcc3', 4, 0),
+('steam:11000010017dcc3', 1, 29),
+('steam:11000010017dcc3', 4, 2),
 ('steam:11000010017dcc3', 8, 0),
 ('steam:11000010017dcc3', 9, 0),
 ('steam:11000010062fbbc', 1, 3),
 ('steam:11000010062fbbc', 9, 0),
+('steam:11000010063d2c7', 1, 1),
+('steam:11000010063d2c7', 9, 0),
 ('steam:110000102234e70', 1, 4);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_weapons`
+-- Structure de la table `user_weapons`
 --
 
 CREATE TABLE `user_weapons` (
@@ -200,7 +204,7 @@ CREATE TABLE `user_weapons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user_weapons`
+-- Contenu de la table `user_weapons`
 --
 
 INSERT INTO `user_weapons` (`ID`, `identifier`, `weapon_model`, `withdraw_cost`) VALUES
@@ -208,35 +212,35 @@ INSERT INTO `user_weapons` (`ID`, `identifier`, `weapon_model`, `withdraw_cost`)
 (20, 'steam:11000010017dcc3', 'WEAPON_AssaultRifle', 2500);
 
 --
--- Indexes for dumped tables
+-- Index pour les tables exportées
 --
 
 --
--- Indexes for table `bans`
+-- Index pour la table `bans`
 --
 ALTER TABLE `bans`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `coordinates`
+-- Index pour la table `coordinates`
 --
 ALTER TABLE `coordinates`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `items`
+-- Index pour la table `items`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jobs`
+-- Index pour la table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`job_id`);
 
 --
--- Indexes for table `recolt`
+-- Index pour la table `recolt`
 --
 ALTER TABLE `recolt`
   ADD PRIMARY KEY (`ID`),
@@ -248,64 +252,64 @@ ALTER TABLE `recolt`
   ADD KEY `seller_id` (`seller_id`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`identifier`);
 
 --
--- Indexes for table `user_inventory`
+-- Index pour la table `user_inventory`
 --
 ALTER TABLE `user_inventory`
   ADD PRIMARY KEY (`user_id`,`item_id`),
   ADD KEY `item_id` (`item_id`);
 
 --
--- Indexes for table `user_weapons`
+-- Index pour la table `user_weapons`
 --
 ALTER TABLE `user_weapons`
   ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT for table `bans`
+-- AUTO_INCREMENT pour la table `bans`
 --
 ALTER TABLE `bans`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `coordinates`
+-- AUTO_INCREMENT pour la table `coordinates`
 --
 ALTER TABLE `coordinates`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `items`
+-- AUTO_INCREMENT pour la table `items`
 --
 ALTER TABLE `items`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `jobs`
+-- AUTO_INCREMENT pour la table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `recolt`
+-- AUTO_INCREMENT pour la table `recolt`
 --
 ALTER TABLE `recolt`
   MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `user_weapons`
+-- AUTO_INCREMENT pour la table `user_weapons`
 --
 ALTER TABLE `user_weapons`
   MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `recolt`
+-- Contraintes pour la table `recolt`
 --
 ALTER TABLE `recolt`
   ADD CONSTRAINT `recolt_ibfk_1` FOREIGN KEY (`raw_id`) REFERENCES `items` (`id`),
@@ -316,7 +320,7 @@ ALTER TABLE `recolt`
   ADD CONSTRAINT `recolt_ibfk_6` FOREIGN KEY (`seller_id`) REFERENCES `coordinates` (`id`);
 
 --
--- Constraints for table `user_inventory`
+-- Contraintes pour la table `user_inventory`
 --
 ALTER TABLE `user_inventory`
   ADD CONSTRAINT `user_inventory_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`);
