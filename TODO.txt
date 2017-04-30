@@ -1,0 +1,10 @@
+1) Flics:
+	- Loadout (arme + skin + option pour véhicule)
+	- Jail
+	- ELS
+2) Motd:
+	- Message d'arrivé avec explain des commands
+	- explain des métiers "caché" weed etc..
+3) Trouver un putain de nom de serv pour faire le loading et le forum !!!
+4)Métier récolte:
+	- restriction véhicule pour faire le métier
