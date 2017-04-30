@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 29, 2017 at 08:47 AM
+-- Generation Time: Apr 30, 2017 at 10:46 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -45,20 +45,32 @@ CREATE TABLE `coordinates` (
   `id` int(11) UNSIGNED NOT NULL,
   `x` double DEFAULT NULL,
   `y` double DEFAULT NULL,
-  `z` double DEFAULT NULL
+  `z` double DEFAULT NULL,
+  `Name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `coordinates`
 --
 
-INSERT INTO `coordinates` (`id`, `x`, `y`, `z`) VALUES
-(1, 2222.84301757813, 5578.4443359375, 53.7291946411133),
-(2, 2477.29931640625, 3784.62109375, 41.4352760314941),
-(3, -1476.54870605469, 171.836669921875, 55.8890762329102),
-(4, 2645.97143554688, 2806.37280273438, 33.9922828674316),
-(5, 1038.34326171875, 2261.36840820313, 43.729866027832),
-(6, 172.151062011719, 2279.62280273438, 92.6908645629883);
+INSERT INTO `coordinates` (`id`, `x`, `y`, `z`, `Name`) VALUES
+(1, 2222.84301757813, 5578.4443359375, 53.7291946411133, ''),
+(2, 2477.29931640625, 3784.62109375, 41.4352760314941, ''),
+(3, -1476.54870605469, 171.836669921875, 55.8890762329102, ''),
+(4, 2645.97143554688, 2806.37280273438, 33.9922828674316, ''),
+(5, 1038.34326171875, 2261.36840820313, 43.729866027832, ''),
+(6, 172.151062011719, 2279.62280273438, 92.6908645629883, ''),
+(7, -586.731062011719, 5334.00080273438, 70.2144545629883, 'Recolte Scierie'),
+(8, -106.731062011719, 2796.00080273438, 53.2144545629883, 'Vente scierie'),
+(9, 586.731062011719, 5334.00080273438, 70.2144545629883, 'Traitement useless'),
+(10, 591.731062011719, 2927.00080273438, 40.2144545629883, 'Recup Petrole'),
+(11, 643.731062011719, 268.00080273438, 103.2144545629883, 'Vente Petrole'),
+(12, 531.731062011719, -1600.00080273438, 29.2144545629883, 'Recolt electricien'),
+(13, -301.731062011719, -1171.00080273438, 23.2144545629883, 'Vente electricien'),
+(14, -423.731062011719, 6130.00080273438, 31.2144545629883, 'Recolte postier'),
+(15, 2119.731062011719, 4790.00080273438, 41.2144545629883, 'Vente postier'),
+(16, 1198.731062011719, 1839.00080273438, 78.2144545629883, 'Recolt Beton'),
+(17, -487.731062011719, -958.00080273438, 22.2144545629883, 'Vente Beton');
 
 -- --------------------------------------------------------
 
@@ -78,13 +90,14 @@ CREATE TABLE `items` (
 INSERT INTO `items` (`id`, `libelle`) VALUES
 (1, 'Cuivre'),
 (2, 'Fer'),
-(3, 'Or'),
+(3, 'Petrole'),
 (4, 'Weed'),
-(5, 'Pain'),
-(6, 'Eau'),
-(7, 'Coca'),
+(5, 'Courrier'),
+(6, 'Pièce défectueuse'),
+(7, 'Béton'),
 (8, 'Pefra'),
-(9, 'Casserole');
+(9, 'Casserole'),
+(10, 'Bois');
 
 -- --------------------------------------------------------
 
@@ -104,10 +117,13 @@ CREATE TABLE `jobs` (
 
 INSERT INTO `jobs` (`job_id`, `job_name`, `salary`) VALUES
 (1, 'Chomeur', 500),
-(2, 'Policier', 1200),
-(3, 'Pompier', 1200),
+(2, 'Ouvrier', 1200),
+(3, 'Pompiste', 1200),
 (4, 'Mineur', 700),
-(5, 'Chauffeur de taxi', 1000);
+(5, 'Electricien', 1000),
+(6, 'Ebeniste', 1000),
+(7, 'Illegal', 0),
+(8, 'Postier', 1000);
 
 -- --------------------------------------------------------
 
@@ -123,16 +139,23 @@ CREATE TABLE `recolt` (
   `price` int(11) DEFAULT NULL,
   `field_id` int(10) UNSIGNED DEFAULT NULL,
   `treatment_id` int(10) UNSIGNED DEFAULT NULL,
-  `seller_id` int(10) UNSIGNED DEFAULT NULL
+  `seller_id` int(10) UNSIGNED DEFAULT NULL,
+  `Comment` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `recolt`
 --
 
-INSERT INTO `recolt` (`ID`, `raw_id`, `treated_id`, `job_id`, `price`, `field_id`, `treatment_id`, `seller_id`) VALUES
-(1, 4, 8, NULL, 3000, 1, 2, 3),
-(2, 1, 9, 4, 1500, 4, 5, 6);
+INSERT INTO `recolt` (`ID`, `raw_id`, `treated_id`, `job_id`, `price`, `field_id`, `treatment_id`, `seller_id`, `Comment`) VALUES
+(1, 4, 8, 7, 3000, 1, 2, 3, 'Weed'),
+(2, 2, 2, 4, 1500, 4, 5, 6, 'Fer'),
+(3, 10, 10, 6, 1500, 7, 9, 8, 'Bois'),
+(4, 4, 8, 7, 3000, 1, 2, 3, 'Weed 2'),
+(5, 3, 3, 3, 1500, 10, 10, 11, 'Bois'),
+(6, 5, 5, 8, 1500, 14, 14, 15, 'Courrier'),
+(7, 6, 6, 5, 1500, 12, 12, 13, 'Electronique'),
+(8, 7, 7, 2, 1500, 16, 16, 17, 'Beton');
 
 -- --------------------------------------------------------
 
@@ -156,7 +179,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`identifier`, `group`, `permission_level`, `money`, `bankbalance`, `job`, `lastpos`, `personalvehicle`) VALUES
-('steam:11000010017dcc3', 'owner', 0, 250207, 281010, 5, '{-489.507568359375, -166.128265380859,  37.4401893615723, 173.554626464844}', 'AKUMA'),
+('steam:11000010017dcc3', 'owner', 0, 307, 287010, 6, '{84.5269241333008, -180.056716918945,  54.3768348693848, 248.89208984375}', 'schafter3'),
 ('steam:110000102234e70', 'user', 0, 3000, 0, 1, '{1257.1728515625, -1145.74743652344,  51.0427513122559, 59.6480445861816}', ''),
 ('steam:1100001047c07d7', 'user', 0, 4000, 0, 1, '{-887.48388671875, -2311.68872070313,  -3.50776553153992, 142.503463745117}', '');
 
@@ -177,10 +200,16 @@ CREATE TABLE `user_inventory` (
 --
 
 INSERT INTO `user_inventory` (`user_id`, `item_id`, `quantity`) VALUES
-('steam:11000010017dcc3', 1, 12),
-('steam:11000010017dcc3', 4, 0),
+('steam:11000010017dcc3', 1, 16),
+('steam:11000010017dcc3', 2, 0),
+('steam:11000010017dcc3', 3, 0),
+('steam:11000010017dcc3', 4, 17),
+('steam:11000010017dcc3', 5, 0),
+('steam:11000010017dcc3', 6, 0),
+('steam:11000010017dcc3', 7, 0),
 ('steam:11000010017dcc3', 8, 0),
 ('steam:11000010017dcc3', 9, 0),
+('steam:11000010017dcc3', 10, 0),
 ('steam:110000102234e70', 1, 4);
 
 -- --------------------------------------------------------
@@ -276,22 +305,22 @@ ALTER TABLE `bans`
 -- AUTO_INCREMENT for table `coordinates`
 --
 ALTER TABLE `coordinates`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `job_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `recolt`
 --
 ALTER TABLE `recolt`
-  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `user_weapons`
 --

@@ -29,9 +29,12 @@ AutoStartResources:
     - cars
     - loadingscreen
     - lastpostodb
-    - lscustoms
     - knockout
+    - lscustoms
     
+#   
+
+
 
 # do change
 RconPassword: lovely
