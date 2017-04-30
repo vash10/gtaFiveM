@@ -12,7 +12,7 @@ Citizen.CreateThread(function()
      end
    end)
 
---[[function storageinit()
+function storageinit()
   bank = AddBlipForCoord(-353.317, -54.1684, 49.0365)
   SetBlipSprite(bank, 304)
   SetBlipAsShortRange(bank, true)
@@ -22,7 +22,7 @@ Citizen.CreateThread(function()
 
   pickup = CreatePickup(GetHashKey("PICKUP_MONEY_SECURITY_CASE"), -354.009, -54.316, 49.046)
   -- SetPickupRegenerationTime(pickup, 10000)
-end--]]
+end
 
 function tick()
 	local  playerPed = GetPlayerPed(-1)
@@ -58,7 +58,7 @@ function tick()
 		if not(IsPlayerWantedLevelGreater(GetPlayerPed(playerPed),0)) then
 					SetPedComponentVariation(playerPed, 9, 0, 0, 0)
 					PlayMissionCompleteAudio("FRANKLIN_BIG_01")
-          TriggerServerEvent('mission:completed', 0)
+          TriggerServerEvent('mission:completed', 500000)
           DrawMissionText("Good job! here is some ~y~cash.", 5000)
 					Stage=0
 			end

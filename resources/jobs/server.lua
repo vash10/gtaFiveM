@@ -11,7 +11,6 @@ end
 function updatejob(player, id)
   local job = id
   MySQL:executeQuery("UPDATE users SET `job`='@value' WHERE identifier = '@identifier'", {['@value'] = job, ['@identifier'] = player})
-  TriggerClientEvent("recolt:updateJobs", source, job)
 end
 
 RegisterServerEvent('jobssystem:jobs')

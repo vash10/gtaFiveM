@@ -3,7 +3,7 @@ files {
     'css/style.css',
     'css/bankgothic.ttf',
     'loadscreen.jpg',
-	'music/Loading.ogg',
+	'music/Loading1.ogg',
 	'images/logo.png',
 	
 }
